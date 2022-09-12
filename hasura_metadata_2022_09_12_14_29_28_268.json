@@ -1,0 +1,92 @@
+{
+  "resource_version": 5,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "chinook",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "Album",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Artist",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Customer",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Employee",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Genre",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Invoice",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "InvoiceLine",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "MediaType",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Playlist",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "PlaylistTrack",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Track",
+              "schema": "public"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "PG_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "use_prepared_statements": false
+          }
+        },
+        "customization": {
+          "naming_convention": "hasura-default"
+        }
+      }
+    ]
+  }
+}
