@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+    postgres_dev:
+        container_name: "postgres_dev"
+        image: postgres:12
+        # network_mode: "bridge"
+        ports:
+        - "6001:5432"
+        environment:
+            POSTGRES_PASSWORD: test
+        volumes:
+        - ./chinook.sql:/docker-entrypoint-initdb.d/chinook.sql
+networks:
+    default:
+        name: HASURA_DEV_NETWORK
+        external: true
+        
