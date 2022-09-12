@@ -1,0 +1,237 @@
+{
+  "resource_version": 37,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "bigquery_test1",
+        "kind": "bigquery",
+        "tables": [
+          {
+            "table": {
+              "dataset": "bigquery_sample",
+              "name": "sample_table"
+            }
+          }
+        ],
+        "configuration": {
+          "datasets": ["bigquery_sample"],
+          "global_select_limit": "1.0",
+          "project_id": "sensei-1244",
+          "service_account": {
+            "client_email": "sensei-1244@appspot.gserviceaccount.com",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQDF0IZWOvFfkvv5\nmKIC0FGtjj58zY09mh9Rz9+CEk5ehFU9yaqIcysXLSNlgPCIoZ/aeqkIWMLk7tPI\nKh7bo3iAcXPzmGoFEQvouJklyHITKFuBuKKHc8ZuLziF7LUK3rVsSNyjmHILVXpu\nZKEaX1ROL8NPE09uscDxzmWYbjW2kpYt8J+N/OGx9AYd+M0mxALUQjz31403dwJl\n1pwZZlW9SrpI0drlevUTRdXLCkB3wZIByyd6yUhuvs5RNy6Hwqd010oRWk4BHWIB\nTK+djVLktJ2C1fbco/AobkUGDZEshHiwdUzFV1JcNMAnu3hOJ8TKXUPrORst7DtO\n/UVx+DH3AgMBAAECgf8XTKrb/FTePznA3ekqLCVngDCEMHuuLnc+pvwAmzgzfWpC\nJbitI4u9Ups4A356fz6o8u0qSHFnHucnGratIKxX22oG1TA5aIzN9qlFsbeRKsy0\nuHq+hqqMDJsrorBCFpKJU/kCtnEVzGCOgkJzydAL+wY2w6FBj8h036R61HjiMS6V\nQqhpMQJCj7HqNl0PLmAUYE6odIC1S3MSkh5ReKCKjMN59uep7OZp154HBM+nUPti\n8hI0hjqZWcbucruUbyuf94Xds5OopJbzVtqunDfWosSXi6zi1FijvIpDtA7OoSVl\nRDqzf06q9uOXAc88kVLbtNXJzBxI7jId7ZN2lXECgYEA8p7Rn4vHdum8EZxpYoQ9\nHhGkVxQGyuasuoy2Se19WtWEzIz9HtvQRRdGyvb18tpv/OXQuq3IRWeqi53EZJdO\nmh3xABEyXIznZqw9qR0Nqh+8Y7hkh4KY+XjtzZwzMAP4ryA3tXXcci6uGIXjI9F5\nT3tkHW1OhK7jugrIIApFeA8CgYEA0LkpaSyy0GxPRC9uMQ0EClTeqD+g2qWsf1qo\nhZ6hjujPvC6dwF8TxjSn9e92GY1dCuWv9Jl4hhn0f8NyC7M7658LhJ4yX/zJl+ml\nyKj9AVu+lrvSIeFQgVvx5WcqnyH3lE3Wbz34euEqHXEmncZCtO465tzQvPa48bZr\n7qXcf5kCgYAKqmKqsdld596Fo6uaUhfht4LS9SVrTAKx3LeyvkbxdEt3Nod2ENGy\nB9jr2TlsqJ+drXikjDkum+UKaDAW//PLoJ9Ukmz1VphhkhbP1WAhZ22/sH5y2pHg\n/ajujfxOEw6enDr2tiyvtE+g8lnO3EmJ7fGzvXdjK9EE/65Wgj0VjwKBgA/7PXp6\nG67tvBwCbbN/xaFs4ieLx6s2KEEQFfs1LDWfCdjk0Ntb7E2u1nV0QlyugENHVvOp\nlJrf/eKSenb+4EWoRd9/pWfIGT9yemkk10p1VeCAvRQvBlUBT0I7Zf4NQcGvPA4E\ndrQh7XGXqldGSPFFlGj821a8pWiMiTMarAlxAoGAMfvSYuQOvuYPGQNB/D02CVKh\n8vXfhreW2AskvSwQD/GQowoAJHSxFcwuVKmVt9RTxyl8nFdP39jW/pgfERZG/Wdp\nwdEPaWnmQMuuxHWu74nAhkkqWL4Ic11QgDXbDM8G6/lLwomjn7nad76VaJKZ7XOc\nSxm7dnKiboH1AfjKnbw=\n-----END PRIVATE KEY-----\n",
+            "project_id": "sensei-1244"
+          }
+        },
+        "customization": {
+          "root_fields": {
+            "namespace": "bigquery"
+          }
+        }
+      },
+      {
+        "name": "mysql",
+        "kind": "mysqlgdc",
+        "tables": [
+          {
+            "table": ["Chinook", "Album"]
+          },
+          {
+            "table": ["Chinook", "Artist"]
+          },
+          {
+            "table": ["Chinook", "Customer"]
+          },
+          {
+            "table": ["Chinook", "Employee"]
+          },
+          {
+            "table": ["Chinook", "Genre"]
+          },
+          {
+            "table": ["Chinook", "Invoice"]
+          },
+          {
+            "table": ["Chinook", "InvoiceLine"]
+          },
+          {
+            "table": ["Chinook", "MediaType"]
+          },
+          {
+            "table": ["Chinook", "Playlist"]
+          },
+          {
+            "table": ["Chinook", "PlaylistTrack"]
+          },
+          {
+            "table": ["Chinook", "Track"]
+          }
+        ],
+        "configuration": {
+          "template": null,
+          "timeout": null,
+          "value": {
+            "jdbc_url": "jdbc:mysql://mysql:3306/Chinook?allowMultiQueries=true&user=root&password=pass"
+          }
+        },
+        "customization": {
+          "root_fields": {
+            "namespace": "mysql"
+          },
+          "type_names": {}
+        }
+      },
+      {
+        "name": "postgres_demo",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "Album",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Artist",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Customer",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Employee",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Genre",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Invoice",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "InvoiceLine",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "MediaType",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Playlist",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "PlaylistTrack",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "Track",
+              "schema": "public"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "POSTGRES_DEMO_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "use_prepared_statements": false
+          }
+        },
+        "customization": {
+          "root_fields": {
+            "namespace": "postgres"
+          }
+        }
+      },
+      {
+        "name": "sqlite",
+        "kind": "sqlite",
+        "tables": [
+          {
+            "table": ["Album"]
+          },
+          {
+            "table": ["Artist"]
+          },
+          {
+            "table": ["Customer"]
+          },
+          {
+            "table": ["Employee"]
+          },
+          {
+            "table": ["Genre"]
+          },
+          {
+            "table": ["Invoice"]
+          },
+          {
+            "table": ["InvoiceLine"]
+          },
+          {
+            "table": ["MediaType"]
+          },
+          {
+            "table": ["Playlist"]
+          },
+          {
+            "table": ["PlaylistTrack"]
+          },
+          {
+            "table": ["Track"]
+          }
+        ],
+        "configuration": {
+          "template": null,
+          "timeout": null,
+          "value": {
+            "db": "/sqlite_db.db",
+            "explicit_main_schema": false,
+            "include_sqlite_meta_tables": false
+          }
+        },
+        "customization": {
+          "root_fields": {
+            "namespace": "sqlite"
+          },
+          "type_names": {}
+        }
+      }
+    ],
+    "backend_configs": {
+      "dataconnector": {
+        "mysql": {
+          "uri": "http://data-connector-agent:8081/api/v1/mysql"
+        },
+        "sqlite": {
+          "uri": "http://sqlite:8100"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+version: '3.6'
+services:
+  engine-metadata-db:
+    image: postgres:15
+    restart: always
+    container_name: 'engine-metadata-db'
+    volumes:
+      - metadata_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: pass
+  postgres:
+    container_name: 'postgres'
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - ./postgres_db.sql:/docker-entrypoint-initdb.d/postgres_db.sql
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - ./mysql_db.sql:/docker-entrypoint-initdb.d/mysql_db.sql
+    ports:
+      - '3306:3306'
+    container_name: 'mysql-db'
+  sqlite:
+    container_name: 'sqlite'
+    image: 'sqlite-agent'
+    ports:
+      - '8100:8100'
+    volumes:
+      - ./sqlite_db.db:/sqlite_db.db
+  graphql-engine:
+    image: hasuraci/graphql-engine:dev-5e3ec39
+    ports:
+      - '8080:8080'
+    depends_on:
+      data-connector-agent:
+        condition: service_healthy
+    restart: always
+    container_name: 'graphql-engine'
+    environment:
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:pass@engine-metadata-db:5432/postgres
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      POSTGRES_DEMO_DATABASE_URL: postgres://postgres:pass@postgres:5432/chinook
+      MSSQL_DATABASE_URL: "'Driver={ODBC Driver 17 for SQL Server};Server=tcp:host.docker.internal,1433;Database=bikes;Uid=sa;Pwd=Oftw4321@;'"
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: 'true'
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: 'naming_convention'
+      # HASURA_GRAPHQL_METADATA_DEFAULTS: '{"backend_configs":{"dataconnector":{"mysqlgdc":{"uri":"http://data-connector-agent:8081/api/v1/mysql"}}}}'
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: moocow
+      HASURA_GRAPHQL_EE_LICENSE_KEY: ''
+  data-connector-agent:
+    container_name: 'super-connector'
+    image: hasuraci/graphql-data-connector:dev-5e3ec39
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      QUARKUS_LOG_LEVEL: ERROR # FATAL, ERROR, WARN, INFO, DEBUG, TRACE
+      ## https://quarkus.io/guides/opentelemetry#configuration-reference
+      QUARKUS_OPENTELEMETRY_ENABLED: 'false'
+      ## QUARKUS_OPENTELEMETRY_TRACER_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8081/api/v1/mysql/health']
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  metadata_db_data:
+# networks:
+#   default:
+#     name: HASURA_DEV_NETWORK
+#     external: true
