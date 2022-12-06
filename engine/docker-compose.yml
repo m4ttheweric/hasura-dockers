@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgrespassword
   graphql-engine:
-    image: hasura/graphql-engine:dev-d9e90f0-main.debian.arm64
+    image: hasura/graphql-engine:dev-8f86ee6-main.ubuntu.arm64
     ports:
       - '8080:8080'
     depends_on:
