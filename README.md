@@ -1,6 +1,6 @@
 # Hasura Frontend Docker Setup
 
-If you want a one-stop shp for setting up a local dev env for Frontend work at Hasura, look no further.
+If you want a one-stop shop for setting up a local dev env for frontend console work at Hasura, look no further.
 
 There are 3 basic steps:
 
