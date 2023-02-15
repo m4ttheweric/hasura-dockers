@@ -14,24 +14,39 @@ services:
     environment:
       POSTGRES_PASSWORD: pass
     volumes:
-      - ./postgres_db.sql:/docker-entrypoint-initdb.d/postgres_db.sql
+      - ./DataSources/postgres.sql:/docker-entrypoint-initdb.d/postgres.sql
   mysql:
     image: mysql:8.0
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=pass
     volumes:
-      - ./mysql_db.sql:/docker-entrypoint-initdb.d/mysql_db.sql
+      - ./DataSources/mysql_db.sql:/docker-entrypoint-initdb.d/mysql.sql
     ports:
       - '3306:3306'
-    container_name: 'mysql-db'
+    container_name: 'mysql'
   sqlite:
     container_name: 'sqlite'
     image: 'sqlite-agent'
     ports:
       - '8100:8100'
     volumes:
-      - ./sqlite_db.db:/sqlite_db.db
+      - ./DataSources/sqlite.db:/sqlite.db
+  sqlserver:
+    container_name: 'sql-server'
+    ports:
+      - '1433:1433'
+    volumes:
+      - ./DataSources/sqlserver.sql:/docker-entrypoint-initdb.d/sqlserver.sql
+    image: mcr.microsoft.com/azure-sql-edge
+    # if not running Apple Silicon (M1/M2 etc), you can use this:
+    #image: mcr.microsoft.com/mssql/server:2022-latest
+    init: true # azure-sql-edge doesn't shut down properly without this
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: 'Password!'
+      MSSQL_SA_PASSWORD: 'Password!'
+
   graphql-engine:
     image: hasuraci/graphql-engine:dev-5e3ec39
     ports:
